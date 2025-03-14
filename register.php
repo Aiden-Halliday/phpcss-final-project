@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="./css/reset.css">
         <link rel="stylesheet" href="./css/style.css">
         <!-- Javascript -->
-         <script href="js/script.js" defer></script>
+         <script src="js/script.js" defer></script>
     </head>
     <body>
         <header>
@@ -24,9 +24,28 @@
 	            include("./includes/global-header.html");
             ?>
         </header>
-            <form method="" action=""> <!-- Form info -->
-                <p><input type='file' name='files[]' multiple /></p> <!--  -->
-                <!--  -->
+            <form id="register_info" action="" method="POST"> <!-- Form info -->
+                <h2>Register an account</h2>
+                <label for="fName">First Name:</label>
+                <input id ="fName" type="text" name="fName" required placeholder="Your first name">
+
+                <label for="lName">Last Name:</label>
+                <input id="lName" type="text" name="lName" required placeholder="Your last name">
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" name="dob" id="dob" required/>
+
+                <label for="email">Email:</label>
+                <input id="email" type="email" name="email" required/>
+
+                <label for="password">Account Password:</label>
+                <input type="password" name="password" id="password" required/>
+
+                <label for="imgUpload">Upload a profile picture:</label>
+                <input type="file" name="file" id="imgUpload" />
+
+                <button type="reset">Clear</button>
+                <button type="submit">Submit</button>
             </form>
         <footer>
             <?php

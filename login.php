@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="./css/reset.css">
         <link rel="stylesheet" href="./css/style.css">
         <!-- Javascript -->
-         <script href="js/script.js" defer></script>
+         <script src="js/script.js" defer></script>
     </head>
     <body>
         <header>
@@ -24,7 +24,19 @@
 	            include("./includes/global-header.html");
             ?>
         </header>
-        
+        <form id="login_info" action="" method="POST"> <!-- Form info -->
+            <h2>Login</h2>
+
+            <label for="email">Email:</label>
+            <input id="email" type="email" name="email" required/>
+
+            <label for="password">Account Password:</label>
+            <input type="password" name="password" id="password" required/>
+
+            <button type="reset">Clear</button>
+            <button type="submit">Submit</button>
+
+        </form>
         <footer>
             <?php
 	            include("./includes/global-footer.html");
