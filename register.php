@@ -1,30 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!-- metadata -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Register an account">
-        <meta name="robots" content="noindex, nofollow">
-        <title>Register | Rent N' Run</title>
-        <link rel="shortcut icon" href="./imgs/icon.png" type="image/x-icon">
-        <!-- fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Jersey+15&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-        <!-- css -->
-        <link rel="stylesheet" href="./css/reset.css">
-        <link rel="stylesheet" href="./css/style.css">
-        <!-- Javascript -->
-         <script src="js/script.js" defer></script>
-    </head>
-    <body>
-        <header>
             <?php
-	            include("./includes/global-header.html");
+                $title = "Register an Account | Rent N' Run";
+                $description = "register for Rent N' Run";
+                include("./includes/global-header.php");
+                require_once ('./includes/database.php');
+                require_once('./includes/validate.php');
+                if($loggedIn == 1){
+                    header('location:index.php');
+                    exit();
+                }
             ?>
-        </header>
-            <form id="register_info" action="" method="POST"> <!-- Form info -->
+            <form id="register_info" action="register.php" method="POST" enctype='multipart/form-data'> <!-- Form info -->
                 <h2>Register an account</h2>
                 <label for="fName">First Name:</label>
                 <input id ="fName" type="text" name="fName" required placeholder="Your first name">
@@ -38,19 +23,71 @@
                 <label for="email">Email:</label>
                 <input id="email" type="email" name="email" required/>
 
-                <label for="password">Account Password:</label>
-                <input type="password" name="password" id="password" required/>
+                <label for="userPassword">Account Password:</label>
+                <input type="password" name="userPassword" id="userPassword" required/>
+
+                <label for="userConfirm">Account Password:</label>
+                <input type="password" name="userConfirm" id="userConfirm" required/>
 
                 <label for="imgUpload">Upload a profile picture:</label>
                 <input type="file" name="file" id="imgUpload" />
 
                 <button type="reset">Clear</button>
-                <button type="submit">Submit</button>
+                <button type="submit" value='Submit' name='submit'>Submit</button>
             </form>
-        <footer>
             <?php
-	            include("./includes/global-footer.html");
+                $validate = new validate();
+                if(isset($_POST['submit'])){
+                    $fName = $_POST['fName'];
+                    $lName = $_POST['lName'];
+                    $dob = $_POST['dob'];
+                    $email = $_POST['email'];
+                    $password = $_POST['userPassword'];
+                    $confirm = $_POST['userConfirm'];
+
+                    $insertData = $conn->prepare("INSERT INTO useraccounts(fName, lName, dob, email, userpassword) VALUES('$fName', '$lName', '$dob', '$email', '$password')");
+                    
+                    $msg = $validate->checkEmpty($_POST, array('fName', 'lName', 'dob', 'email', 'userPassword')); //checks that all data is not empty
+                    $checkName = $validate->validName($_POST, array('fName', 'lName')); //checks that the first and last name have only letters
+                    $checkEmail = $validate->validEmail($_POST['email']);  //checks that email is in proper format
+                    $checkPassword = $validate->validPassword($_POST['userPassword'], $_POST['userConfirm']);
+                    //check password
+                    if($msg != null) //feedback for empty form inputs (shouldn't appear due to html required but failsafe is here just incase)
+                    {
+                        echo "<p>$msg</p>";
+                    }
+                    else if(!$checkName) //feedback for invalid name
+                    {
+                        echo "<p>Please provide a valid name (only letter characters and hyphens)</p>";
+                        echo "<div>";
+                        echo "<a href='javascript:self.history.back();'>Go Back </a>";
+                        echo "</div>";
+                    }
+                    else if(!$checkEmail) //invalid email
+                    {
+                        echo "<p>Please provide a valid email</p>";
+                        echo "<div>";
+                        echo "<a href='javascript:self.history.back();'>Go Back </a>";
+                        echo "</div>";
+                        
+                    }
+                    else if(!$checkPassword){
+                        echo "<p>Please provide a valid password</p>";
+                        echo "<div>";
+                        echo "<a href='javascript:self.history.back();'>Go Back </a>";
+                        echo "</div>";
+                    }
+                    else{
+                        $password = hash('sha512', $password);
+                        $insertData->execute();
+                        echo "<section class='successResponse'>";
+		                    echo "<div>";
+			                    echo "<p>All setup, click the button below to head to the sign in page!</p>";
+			                    echo "<a href='login.php'>Sign In</a>";
+		                    echo "</div>";
+	                    echo"</section>";
+                        $conn = null;
+                    }
+                }
+                include("./includes/global-footer.php");
             ?>
-        </footer>
-    </body>
-</html>
