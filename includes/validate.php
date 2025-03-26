@@ -52,8 +52,8 @@
         public function validateLogin($email, $password, $conn)
         {
             $sql = "SELECT accountid FROM useraccounts WHERE email = '$email' AND userpassword = '$password'";
-            $result = $conn->query($sql);
-
+            $result = $conn->prepare($sql);
+            $result->execute();
             $count = $result -> rowCount();
 
             if ($count == 1)
@@ -65,8 +65,7 @@
                     $_SESSION['accountid'] = $row['accountid'];
 
                     Header('Location: index.php');
-                }
-                
+                }  
             }
             else{
                 return "invalid";

@@ -24,16 +24,13 @@
             <nav>
                 <menu>
                     <li><a href="index.php"> Home </a></li>
-                    <li><a href="about.php"> About </a></li>
                     <li><a href="register.php"> Register </a></li>
                     <li><a href="login.php"> Login </a></li>
-                    <li><a href="policy.php"> Policy </a></li>
-                    <li><a href="terms.php"> Terms </a></li>
                     <li><a href="viewData.php"> See Users </a></li>
                 </menu>
             </nav>
             <?php
-                session_start(); // Start or resume the session
+                session_start();
                 $loggedIn = isset($_SESSION['accountid']) ? 1 : 0;
 
                 // Check if the user_id session variable exists

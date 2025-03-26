@@ -9,17 +9,20 @@ CREATE TABLE useraccounts(
   dob DATE NOT NULL,
   email VARCHAR(255) NOT NULL,
   userpassword VARCHAR(70) NOT NULL,
-  profileimage VARCHAR(255)
+  profileimage VARCHAR(255) DEFAULT './uploads/placeholder.png'
 );
-
 
 CREATE TABLE gameinfo(
-    gameid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(100) NOT NULL,
-    description VARCHAR(350) NOT NULL,
-    genre VARCHAR(50),
-    publisher VARCHAR(200) NOT NULL,
-    stock INT NOT NULL,
-    rating DECIMAL(2, 1) NOT NULL,
-    gameimage VARCHAR(255) NOT NULL
+  gameid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(100) NOT NULL,
+  description VARCHAR(350) NOT NULL,
+  genre VARCHAR(50) NOT NULL,
+  publisher VARCHAR(200) NOT NULL,
+  stock INT NOT NULL,
+  rating DECIMAL(2, 1) NOT NULL,
+  gameimage VARCHAR(255) NOT NULL,
+  accountid INT NOT NULL, 
+  FOREIGN KEY (accountid) REFERENCES useraccounts(accountid)
 );
+
+

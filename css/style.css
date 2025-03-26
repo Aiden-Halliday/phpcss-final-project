@@ -1,3 +1,115 @@
-#gameCategories{
-    
+
+td img{
+    height: 50px;
+    width: 50px;
 }
+
+html{
+    background: linear-gradient(to bottom, #f5af47, #ce44c8);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body{
+  min-width: 100vw;
+}
+
+/* Global-Header Page CSS */
+header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(34, 175, 76);
+    z-index: 9001;
+  }
+  header nav h1{
+
+  }
+  header nav menu{
+    display: flex;
+    list-style: none;
+  }
+  header nav menu li{
+  }
+  header nav menu li a{
+    color: black;
+    position: relative;
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+/* Index Page CSS */
+#bannerSpace{
+    padding: 95px;
+    background-image: url(../imgs/SloganBackground.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+#bannerSpace h1{
+    font-size: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#retailDetails{
+    padding: 40px;
+    background-color: #f5af47;
+}
+
+#retailDetails h2{
+    font-size: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameCategories{
+    padding: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#recomendedSection{
+    font-size: 20px;
+    margin: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* About Page CSS */
+
+/* Login Page CSS */
+
+/* Policy Page CSS */
+
+/* Terms Page CSS */
+
+/* Global-Footer Page CSS */
+footer{
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 66px;
+    background-color:#b74bb2;
+    z-index: 9001;
+  }
+  footer nav menu{
+    display: flex;
+    list-style: none;
+    padding-left: 100px;
+    
+  }
+  footer nav menu li{
+    padding: 0 10px;
+  }
+  footer nav menu li a{
+    color: black;
+    position: relative;
+    text-decoration: none;
+    font-size: 20px;
+  }
