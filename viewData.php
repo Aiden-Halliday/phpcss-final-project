@@ -28,8 +28,8 @@
 			require_once('./includes/validate.php');
 			$validate = new validate();
 			$idToUpdate = ($_POST['userId']); 
-			$newFName = $_POST['fName'];
-			$newLName = $_POST['lName'];
+			$newFName = trim($_POST['fName']);
+            $newLName = trim($_POST['lName']);
 			$newEmail = $_POST['email'];
 
 			$filename = $_FILES['file']['name'];
@@ -46,9 +46,9 @@
 			$updateData = $conn->prepare("UPDATE useraccounts SET fname = '$newFName', lname = '$newLName', email = '$newEmail', profileimage = '$target_file' WHERE accountid = '$idToUpdate';)");
 			$msg = $validate->checkEmpty($_POST, array('fName', 'lName', 'email')); //checks that all data is not empty
 			$checkName = $validate->validName($_POST, array('fName', 'lName')); //checks that the first and last name have only letters
-			$checkEmail = $validate->validEmail($_POST['email']);  //checks that email is in proper format
+			$checkEmail = $validate->validEmail($_POST['email'], $conn);  //checks that email is in proper format and doesnt already exist
 			//check password
-			if($msg != null) //feedback for empty form inputs (shouldn't appear due to html required but failsafe is here just incase)
+			if($msg != null) //feedback for empty form inputs 
 			{
 				echo "<p>$msg</p>";
 			}
@@ -102,7 +102,7 @@
 							<td>" . $row['email'] . "</td>
 							<td>" . $row['dob'] . "</td>
 							<td>
-								<img src='" . $row['profileimage'] . "'>
+								<img src='" . $row['profileimage'] . "' alt='profile picture'>
 							</td>
 							<td>
 								<form method='POST' action='viewData.php'>
@@ -119,9 +119,6 @@
 			echo "</table>";
 			if (isset($_POST['update'])) {
 				$idToUpdate = ($_POST['update']); 
-				$updateQuery = "SELECT * FROM useraccounts WHERE accountid = '$idToUpdate'";
-    			$updateResult = $conn->query($updateQuery);
-				
 				$updateQuery = "SELECT * FROM useraccounts WHERE accountid = '$idToUpdate'";
             	$updateResult = $conn->prepare($updateQuery);
             	$updateResult->execute();

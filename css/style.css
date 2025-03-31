@@ -5,111 +5,688 @@ td img{
 }
 
 html{
-    background: linear-gradient(to bottom, #f5af47, #ce44c8);
-    background-size: cover;
-    background-repeat: no-repeat;
+  background: linear-gradient(to bottom, #f5af47, #ce44c8);
+  background-size: cover;
+  background-repeat: no-repeat;
+  scroll-behavior: smooth;
 }
 
 body{
-  min-width: 100vw;
+  width: 100%;
 }
 
-/* Global-Header Page CSS */
+/* Global-Header CSS */
 header{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100px;
-    background-color: rgb(34, 175, 76);
-    z-index: 9001;
-  }
-  header nav h1{
+  font-size: 20px;
+  font-family: "Jersey 15", serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(34, 175, 76);
+  padding: 30px 5%;
+  border-bottom: 12px double black;
+  letter-spacing: 1px;
+  height: 9vh;
+}
 
-  }
-  header nav menu{
-    display: flex;
-    list-style: none;
+header a.logoLink{
+  text-decoration: none;
+}
+
+header a h1{
+  font-size: 2em;
+  font-family: "Honk", serif;
+}
+
+header nav menu{
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+header nav menu li{
+  display:inline-block;
+  font-size: 2em;
+}
+
+header nav menu li a{
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+}
+
+header nav menu li a:hover{
+  text-decoration: underline;
+}
+
+header div.headerAccount{
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+  margin-left: 5%;
+}
+
+header div.headerAccount img{
+  height: 40px;
+  width: 50px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+header a.usernameText{
+  font-family: "Chakra Petch", monospace;
+  font-size: 1em;
+  white-space: nowrap; 
+  overflow: hidden;    
+  text-overflow: ellipsis; 
+  text-decoration: none;
+  color: black;
+}
+
+header a.usernameText:hover{
+  text-decoration: underline;
+  background-color: rgb(40, 207, 90);
+}
+
+header div#headerLogin{
+  margin-left: 5%;
+}
+
+form#header_login{
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+}
+
+form#header_login h1{
+  font-size: 1.5em;
+  text-align: center;
+}
+
+form#header_login input{
+  border-radius: 5px;
+  background-color: #b74bb2;
+  border-bottom: 5px double black;
+}
+
+form#header_login input::placeholder{
+  color: black;
+}
+
+form#header_login button{
+  border-radius: 5px;
+  border-bottom: 5px double black;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 920px){
+  header a h1{
+    font-size: 1.5em;
   }
   header nav menu li{
+    font-size: 1.1em;
   }
-  header nav menu li a{
-    color: black;
-    position: relative;
-    text-decoration: none;
-    font-size: 20px;
+  header a.usernameText{
+    font-size: 0.8em;
   }
+  header div.headerAccount img{
+    width: 40px;
+  }
+}
+
+/* messages */
+
+.errorMsg{
+  background-color: orangered;
+  font-size: 1.5em;
+  border-top: 5px solid black;
+  font-family: "Roboto", arial;
+  padding: 2%;
+}
+
+.errorLogin{
+  background-color: orangered;
+  font-size: 1.5em;
+  border-bottom: 5px solid black;
+  font-family: "Roboto", arial;
+  padding: 2%;
+}
+
+.successResponse{
+  background-color: rgb(34, 175, 76);
+  font-size: 1.5em;
+  border-top: 5px solid black;
+  font-family: "Roboto", arial;
+  padding: 2%;
+}
 
 /* Index Page CSS */
-#bannerSpace{
-    padding: 95px;
-    background-image: url(../imgs/SloganBackground.png);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-#bannerSpace h1{
-    font-size: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+section#masthead{
+  background-image: url("../imgs/controller.jpg");
+  height: 90vh;
+  font-size: 23px;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: "Chakra Petch", sans-serif;
+  color: rgb(255, 255, 255);
 }
 
-#retailDetails{
-    padding: 40px;
-    background-color: #f5af47;
+section#masthead div{ /* parallex color on top to give the image a better look with some shading */
+  height:100%;
+  background-color: rgba(245, 175, 71, .15);
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
 }
 
-#retailDetails h2{
-    font-size: 27px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+section#masthead h2{ 
+  padding-top: 5%;
+  font-size: 3em;
+  text-shadow: 4px 3px 2px black;
+  letter-spacing: 3px;
+}
+
+section#masthead div p{
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  color: rgb(239, 239, 239);
+}
+
+@media screen and (max-width: 920px){
+  section#masthead h2{
+    font-size: 2em;
+  }
+  section#masthead div p{
+    font-size: 1.1em;
+  }
+}
+
+
+#rentalDetails{
+  background-color: #f5af47;
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 20px;
+  border-top: 10px solid black;
+  border-bottom: 10px dashed black;
+  letter-spacing: 2px;
+}
+
+#rentalDetails h2{
+  text-align: center;
+  font-size: 3em;
+  padding: 30px 5%;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 920px){
+  #rentalDetails{
+    border-bottom: 5px dashed black;
+  }
+  #rentalDetails h2{
+    font-size: 2em;
+  }
 }
 
 #gameCategories{
-    padding: 80px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 60vh;
+  padding: 5%;
+  font-weight: 600;
+  overflow: hidden;
 }
 
-#recomendedSection{
-    font-size: 20px;
-    margin: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#gameCategories div{
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
+
+#gameCategories div a{
+  position:absolute;
+  color: orange;
+  text-shadow: 5px 1px 2px black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /*positions in the center of the element */
+  text-align: center;
+  padding: 15% 10%;
+  font-size: 300%;
+  z-index: 9998;
+  text-decoration: none;
+  transition: all 0.5s;
+  white-space: nowrap;
+}
+
+#gameCategories div div.background-zoom{
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 1; 
+  transition: all 0.5s;
+}
+
+#gameCategories div:first-child div.background-zoom{
+  background-image: url(../imgs/NewAdditionszerotext.png);
+}
+
+#gameCategories div:nth-child(2) div.background-zoom{
+  background-image: url(../imgs/onsale.png);
+}
+
+#gameCategories div:last-child div.background-zoom{
+  background-image: url(../imgs/NewAdditionszerotext.png);
+}
+
+#gameCategories div:first-child a:hover + div.background-zoom{
+  transform: scale(1.1);
+  border: 5px solid black;
+  z-index: 2;
+  filter:contrast(1.5);
+}
+
+#gameCategories div:nth-child(2) a:hover + div.background-zoom{
+  transform: scale(1.1);
+  border: 5px solid black;
+  z-index: 2;
+  filter:contrast(1.5);
+}
+
+#gameCategories div:last-child a:hover + div.background-zoom{
+  transform: scale(1.1);
+  border: 5px solid black;
+  z-index: 2;
+  filter:contrast(1.5);
+}
+
+@media screen and (max-width: 768px){
+  #gameCategories{
+      grid-template-columns: none;
+      grid-template-rows: repeat(3, 1fr);
+  }
+
+  #gameCategories div a{
+      padding: 0;
+  }
+
+  #gameCategories div:first-child div.background-zoom{
+    background-image: url(../imgs/NewAdditionsmobile.png);
+    background-position: 10%;
+  }
+
+  #gameCategories div:nth-child(2) div.background-zoom{
+    background-image: url(../imgs/onsalemobile.png);
+    background-position: 10%;
+  }
+}
+
+div#allGamesContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  font-size: 20px;
+  font-family: "Chakra Petch", monospace;
+}
+
+div#allGamesContainer a#allGameButton{
+  padding: 3% 5%;
+  border-radius: 5px;
+  font-size: 2em;
+  border: 5px solid black;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  background-color: orange;
+}
+
+div#allGamesContainer a#allGameButton:hover{
+  background-color: rgb(249, 182, 58);
+}
+
 
 /* About Page CSS */
 
-/* Login Page CSS */
+#aboutSection{
+  display: flex;
+  flex-direction: column;
+  font-family:"Chakra Petch", sans-serif;
+  height: 140vh;
+  font-size: 30px;
+  gap: 5%;
+}
 
-/* Policy Page CSS */
+#aboutSection h2{
+  font-family:"Honk", sans-serif;
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 1.5em;
+}
 
-/* Terms Page CSS */
+#aboutSection p{
+  text-align: center;
+  font-size: 1.5em;
+}
 
-/* Global-Footer Page CSS */
-footer{
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    height: 66px;
-    background-color:#b74bb2;
-    z-index: 9001;
-  }
-  footer nav menu{
-    display: flex;
-    list-style: none;
-    padding-left: 100px;
-    
-  }
-  footer nav menu li{
-    padding: 0 10px;
-  }
-  footer nav menu li a{
-    color: black;
-    position: relative;
-    text-decoration: none;
+#aboutSection section{
+  padding-left: 5%;
+  padding-right: 5%;
+  letter-spacing: 2px;
+}
+
+#aboutSection > div{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: space-around; 
+}
+
+#aboutSection > div p{
+  font-size: 1em;
+  letter-spacing: 2px;
+}
+
+#aboutSection > div a#aboutRegister{
+  display: inline-block;
+  padding: 8px 4px;
+  border-radius: 5px;
+  font-size: 2em;
+  border: 5px solid black;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  background-color: #b74bb2;
+}
+
+#aboutSection a#aboutRegister:hover{
+  background-color: #ca62c5;
+}
+
+@media screen and (max-width: 920px){
+  #aboutSection{
     font-size: 20px;
   }
+  #aboutSection > div a#aboutRegister{
+    padding: 4px 2px;
+    border-radius: 5px;
+  }
+}
+
+/* Login Page CSS */
+
+
+
+/* Register Page CSS */
+section#registerSection{
+  padding: 2% 5%;
+  font-size: 20px;
+}
+
+section#registerSection > form#register_info{
+  margin: auto;
+  text-align: center;
+  border: 4px solid black;
+  border-radius: 10px;
+  padding: 5%, 0%;
+  background: linear-gradient(to bottom, #ce44c8, #f5af47);
+}
+
+section#registerSection > form#register_info h2{
+  font-size: 2.5em;
+  padding-bottom: 2%;
+  font-family: "Honk", serif;
+}
+
+section#registerSection > form#register_info div{
+  padding: 3%;
+}
+
+section#registerSection > form#register_info label{
+  font-family: "Honk", serif;
+}
+
+section#registerSection > form#register_info input{
+  outline: none;
+  border: solid 5px #b74bb2;
+  border-radius: 10px;
+  font-family: "Chakra Petch", monospace;
+  transition: all 0.5 ease-in-out;
+}
+
+section#registerSection > form#register_info div:nth-child(2) input{
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+section#registerSection > form#register_info div:nth-child(3) label{
+  font-size: 2em;
+}
+
+section#registerSection > form#register_info div:nth-child(3) input{
+  padding: 10px;
+  font-size: 1.4em;
+}
+
+section#registerSection > form#register_info div:nth-child(4) input{
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+section#registerSection > form#register_info div:nth-child(5) label{
+  font-size: 2em;
+}
+
+section#registerSection > form#register_info div:nth-child(5) input{
+  padding: 10px;
+  font-size: 1.4em;
+}
+
+section#registerSection > form#register_info div:nth-child(6) label{
+  font-size: 2em;
+}
+
+section#registerSection > form#register_info div:nth-child(6) input{
+  padding: 10px;
+  font-size: 1.4em;
+}
+
+section#registerSection > form#register_info div:nth-child(7) label{
+  font-size: 1.5em;
+  cursor: pointer;
+  background-color: #b74bb2;
+  border: 5px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+section#registerSection > form#register_info div:nth-child(7) label:hover{
+  cursor: pointer;
+  background-color: #d75fd1;
+  border: 5px solid white;
+}
+
+section#registerSection > form#register_info div:nth-child(7) input[type="file"] {
+  display: none; 
+}
+
+section#registerSection > form#register_info div:nth-child(8) button{
+  font-size: 1.5em;
+  cursor: pointer;
+  border: 5px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+section#registerSection > form#register_info div:nth-child(8) button[type="submit"]{
+  background-color: rgb(34, 175, 76);
+}
+
+section#registerSection > form#register_info div:nth-child(8) button[type="submit"]:hover{
+  background-color: rgb(43, 208, 93);
+}
+
+section#registerSection > form#register_info div:nth-child(8) button[type="reset"]{
+  background-color: rgb(179, 22, 22);
+}
+
+section#registerSection > form#register_info div:nth-child(8) button[type="reset"]:hover{
+  background-color: rgb(243, 29, 29);
+}
+
+@media screen and (max-width: 960px){
+  section#registerSection > form#register_info div:nth-child(2) input{
+    font-size: 1em;
+  }
+}
+
+/* Policy Page CSS */
+main#policy{
+  font-family:"Roboto", sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+main#policy > h2{
+  font-family: "Honk", "Roboto", Arial;
+  text-align: center;
+  font-size: 3em;
+}
+
+main#policy section{
+  padding: 3%;
+  line-height: 40px;
+}
+
+main#policy section h2{
+  font-size: 2em;
+  margin-left: 3%;
+  padding-bottom: 2%;
+  font-family:"Chakra Petch", sans-serif;
+  text-decoration: underline;
+}
+
+main#policy section p{
+  font-size: 1.5em;
+  text-indent: 2%;
+}
+
+main#policy section p::first-line{
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+main#policy section li{
+  font-size: 1.5em;
+  padding: 2%;
+  list-style-type: disc;
+  margin-left: 2%;
+}
+
+main#policy section li::first-line{
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Terms Page CSS */
+main#terms{
+  font-family:"Roboto", sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+main#terms > h2{
+  font-family: "Honk", "Roboto", Arial;
+  text-align: center;
+  font-size: 3em;
+}
+
+main#terms section{
+  padding: 3%;
+  line-height: 40px;
+}
+
+main#terms section h2{
+  font-size: 2em;
+  margin-left: 3%;
+  padding-bottom: 2%;
+  font-family:"Chakra Petch", sans-serif;
+  text-decoration: underline;
+}
+
+main#terms section p{
+  font-size: 1.5em;
+  text-indent: 2%;
+}
+
+main#terms section p::first-line{
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+main#terms section li{
+  font-size: 1.5em;
+  padding: 2%;
+  list-style-type: disc;
+  margin-left: 2%;
+}
+
+main#terms section li::first-line{
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+/* User Library CSS */
+
+
+/* ViewData CSS */
+
+
+/* ViewGames CSS */
+
+
+/* Global-Footer Page CSS */
+
+footer{
+  font-family: "Jersey 15", monospace;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 30px 5%;
+  background-color:#b74bb2;
+  border-top: 12px double black;
+}
+footer h5{
+  flex-grow: 1;
+}
+footer nav menu{
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+footer nav menu li{
+  display:inline-block;
+  font-size: 1.5em;
+}
+
+footer nav menu li a{
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+}
+
+footer nav menu li a:hover{
+  text-decoration: underline;
+}
+
+footer nav menu li:not(:last-child){ /*creates horizontal lines between 1st-2nd links and 2nd-3rd links*/
+  border-right: 3px solid black;
+}

@@ -1,0 +1,36 @@
+PHP
+- use bindParam for all sql statements
+- (show error when filter is not a valid value), feedback on login as well
+
+idea: user can delete another user, database checks if the logged in user still exists when this happens, also can update data (update and delete). JUST NEED TO DO UPDATE
+users can rent a game and those games are no longer displayed (crud functionality to website content) - COMPLETE
+
+CSS ----------------------------------------------------------
+
+About.PHP                      100% (needs adjustments to go to smaller screens)
+index.PHP                      100% (once header is fixed, check if it is fully responsive and maybe add some more effects)
+login.PHP                      0%
+logout.PHP                     N/A
+policy.PHP                     100%
+register.PHP                   100% (just style success message button, focus effects, and possible responsive changes)
+terms.PHP                      100%
+userLibrary.PHP                0%
+viewData.PHP                   0%
+viewGames.PHP                  0%
+
+global header                 needs mobile version
+global footer                 100%! (might need some media size reductions later)
+
+
+
+
+for game page:
+
+(rows)              (columns)
+title                   sale sticker        (goes from rows to columns) in mobile, flex switch to potrait verison.    
+description             game picture
+genre
+publisher
+etc
+
+

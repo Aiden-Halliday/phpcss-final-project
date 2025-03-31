@@ -4,35 +4,45 @@
         include("./includes/global-header.php");
         $conn = null;
     ?>
-    <section id="bannerSpace">
-        <h1>Making Renting Games a Walk in the Park!</h1>
+    <section id="masthead">
+        <div>
+            <h2>Making Renting Games a Walk in the Park!</h2>
+            <p>At Rent N' Run, we make renting games as easy and enjoyable as a stroll through your favorite park. Whether you're looking for the latest releases, timeless classics, or hidden gems, our hassle-free process ensures you'll have access to your next gaming adventure in no time.</p>
+        </div>
     </section>
-    <section id="retailDetails">
+    <section id="rentalDetails">
         <h2>See our Rentals Below!</h2>
     </section>
     <section id="gameCategories">
-        <div id="mostRented">
-            <img src="./imgs/Bg1.jpg" alt="Background image for the 'rented games' sections">
-            <h3>Most Rented</h3>
-        </div>
 
         <div id="newReleases">
-            <img src="./imgs/Bg2.jpg" alt="Background image for the 'new releases' sections">
-            <h3>New Releases</h3>
+            <a href="viewGames.php?filter=Recent">New Releases</a>
+            <div class="background-zoom"></div>
         </div>
-            
-        <div id="onSale">
-            <img src="./imgs/Bg3.jpg" alt="Background image for the 'games on sale' sections">
-            <h3>Games on Sale</h3>   
-        </div>
-    </section>
-        <section id="recomendedSection">
-            <section> 
-                <div> <!-- This bit here will be for showing a selection of games on a menu, with users being able to look through them either by pressing arrows, or hitting buttons underneath to go to one of three sections -->
 
-                </div>
-            </section>
-        </section>
+        <div id="onSale">
+            <a href="viewGames.php?filter=Sale"> Games on Sale </a>
+            <div class="background-zoom"></div>
+        </div>
+
+        <?php
+            $genreChoices = ["Action", "Adventure", "Horror", "Platformer", "RPG"];
+            $randomGenre = array_rand($genreChoices);
+            $randomGenre = $genreChoices[$randomGenre];
+        ?>
+
+        <div id="randomGenre">
+            <?php
+                echo "<a href='viewGames.php?filter=" . urlencode($randomGenre) . "'>" . $randomGenre . "</a>";
+            ?>
+            <div class="background-zoom"></div>
+        </div>
+
+    </section>
+
+        <div id="allGamesContainer"> 
+            <a href="viewGames.php?filter=All" id="allGameButton"> All Games </a>
+        </div>
         <?php
 	        include("./includes/global-footer.php");
         ?>

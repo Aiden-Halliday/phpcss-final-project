@@ -4,8 +4,8 @@
             include("./includes/global-header.php");
             $conn = null;
         ?>
-        <main>
-            <h1>Privacy Policy</h1>
+        <main id="policy">
+            <h2>Privacy Policy</h2>
 
             <section>
                 <h2>Information We Collect</h2>

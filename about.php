@@ -5,8 +5,8 @@
             $conn = null;
         ?>
         </header>
-        <section>
-            <h1>About Us</h1>
+        <section id="aboutSection">
+            <h2>About Rent N' Run</h2>
             <section>
                 <h2>Our Mission</h2>
                 <p>Our mission is to revolutionize the standard pratices for rental services, making it easier than ever to get your hands on both new and old games without breaking the bank.</p>
@@ -17,9 +17,11 @@
                 <p>Founded with a passion for gaming and a commitment to sustainability, Rent N' Run promotes smarter consumption by encouraging rentals over purchases, reducing waste, and fostering a shared love for all things gaming.</p>
                 <p>Whether you're a casual player or a hardcore enthusiast, we're here to help bring affordability into your gaming world.</p>
             </section>
+            <div>
                 <p>Ready to begin your next journey? With Rent N' Run, it'll be much cheaper then most!</p>
+                <a href="register.php" id="aboutRegister"> Register </a>
+            </div>
         </section>
-        <!-- maybe add a call to action to link to the homepage viewing -->
         <?php
 	        include("./includes/global-footer.php");
         ?>

@@ -4,8 +4,8 @@
             include("./includes/global-header.php");
             $conn = null;
         ?>
-        <main>
-            <h1>Terms of use</h1>
+        <main id="terms">
+            <h2>Terms of use</h2>
             <section>
                 <h2>1. Acceptance of Terms</h2>
                 <p>By accessing or using Rent N' Run's services, you agree to comply with and be bound by these Terms of Use. If you do not agree, please refrain from using our services.</p>
