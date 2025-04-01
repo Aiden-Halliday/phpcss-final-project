@@ -21,6 +21,8 @@
     $result = $conn->prepare($sql);
     $result->execute();
     if($result->rowCount() > 0){
+        echo "<h2 id='libraryTitle'>Your Games</h2>
+         <section class='gameList'>";
         foreach($result as $row){
             echo "<section class='gameContainer'>";
                 echo "<div class='gameInfo'>
@@ -38,11 +40,18 @@
                 </div>
             </section>";
         }
+        echo "</section>";
+        echo"<a href='logout.php' class='logoutButton'>Logout</a>";
     }
     else{
-        echo "<section class='nodata'>";
-            echo "<h2>No games in your library</h2>";
-            echo "<p>There are currently no games in your library. <a href='index.php#gameCategories'>Rent some games</a> first!</p>";
+        echo "<section class='noData'>";
+            echo "<div>";
+                echo "<h2>No games in your library</h2>";
+                echo "<p>There are currently no games in your library.</p> 
+                <p><a href='index.php#gameCategories' id='gameCta'>Rent some games</a> first!</p>";
+            echo "</div>";
+            echo"<p>...or come back at a later date!</p>
+            <a href='logout.php' class='logoutButton'>Logout</a>";
         echo "</section>";
     }
     include './includes/global-footer.php';

@@ -13,10 +13,9 @@
             return $msg;
         }
 
-        //potentially check for email already being used here???
         public function validEmail($email, $conn) 
         {
-            if(filter_var($email, FILTER_VALIDATE_EMAIL)) //checks if the email follows proper formatting
+            if(filter_var($email, FILTER_VALIDATE_EMAIL)) //checks if the email follows proper formatting and is not in use
             {
                 $sql = "SELECT email FROM useraccounts WHERE email = '$email'";
                 $result = $conn->prepare($sql);

@@ -32,34 +32,49 @@
             $newLName = trim($_POST['lName']);
 			$newEmail = $_POST['email'];
 
+			$updateQuery = "SELECT * FROM useraccounts WHERE accountid = '$idToUpdate'";
+			$updateResult = $conn->prepare($updateQuery);
+            $updateResult->execute();
+
+			$count = $updateResult -> rowCount();
+			if ($count == 1) {
+				$row = $updateResult->fetch(PDO::FETCH_ASSOC);
+				$originalEmail = $row['email'];
+				$originalProfile = $row['profileimage'];
+			}
+
 			$filename = $_FILES['file']['name'];
             if ($filename == null){
-                $filename = "placeholder.png";
+                $target_file = $originalProfile;
             }
-
-			$target_file = './uploads/'.$filename;
+			else{
+				$target_file = './uploads/'.$filename;
+			}
 			//file extensions
 			$file_extension = pathinfo($target_file, PATHINFO_EXTENSION);
 			$file_extension = strtolower($file_extension);
 			// valid image extensions
 			$valid_extension = array("png", "jpeg", "jpg");
+			
 			$updateData = $conn->prepare("UPDATE useraccounts SET fname = '$newFName', lname = '$newLName', email = '$newEmail', profileimage = '$target_file' WHERE accountid = '$idToUpdate';)");
 			$msg = $validate->checkEmpty($_POST, array('fName', 'lName', 'email')); //checks that all data is not empty
 			$checkName = $validate->validName($_POST, array('fName', 'lName')); //checks that the first and last name have only letters
-			$checkEmail = $validate->validEmail($_POST['email'], $conn);  //checks that email is in proper format and doesnt already exist
+			$checkEmail = true;
+			if ($newEmail != $originalEmail){
+				$checkEmail = $validate->validEmail($_POST['email'], $conn);  //checks that email is in proper format and doesnt already exist
+			}
 			//check password
 			if($msg != null) //feedback for empty form inputs 
 			{
-				echo "<p>$msg</p>";
+				echo "<p class='errorMsg'>$msg</p>";
 			}
 			else if(!$checkName) //feedback for invalid name
 			{
-				echo "<p>Please provide a valid name (only letter characters and hyphens)</p>";
+				echo "<p class='errorMsg'>Please provide a valid name (only letter characters and hyphens)</p>";
 			}
 			else if(!$checkEmail) //invalid email
 			{
-				echo "<p>Please provide a valid email</p>";
-				
+				echo "<p class='errorMsg'>Please provide a valid email</p>";
 			}
 			else{
 				if(in_array($file_extension, $valid_extension)){
@@ -67,7 +82,7 @@
 						$updateData->execute();
 						$message = "User Updated successfully!";
 					}
-					else if($target_file == './uploads/placeholder.png') {
+					else if($target_file == $originalProfile) {
 						$updateData->execute();
 						$message = "User Updated successfully!";
 					}
@@ -76,7 +91,7 @@
 		}
 
 		if (isset($message)) {
-			echo "<p>$message</p>";
+			echo "<p class='updateDeleteMessage'>$message</p>";
 		}
 
 		$sql = "SELECT * FROM useraccounts";
@@ -84,15 +99,17 @@
 		$result = $conn->prepare($sql);
 		$result->execute();
 
-		echo "<section>";
+		echo "<section id='userTable'>";
 		echo "<table>
 				<tr>
 					<th>Id</th>
-					<th>First Name</th>
-					<th>Last Name</th>
+					<th>Fname</th>
+					<th>Lname</th>
 					<th>Email</th>
-					<th>Date of Birth</th>
+					<th>DoB</th>
 					<th>Profile Picture</th>
+					<th>Delete</th>
+					<th>Update</th>
 				</tr>";
 			foreach($result as $row){
 				echo "<tr>
@@ -116,7 +133,9 @@
 							</td>
 					</tr>";
 			}
-			echo "</table>";
+			echo "</table>
+			</section>";
+
 			if (isset($_POST['update'])) {
 				$idToUpdate = ($_POST['update']); 
 				$updateQuery = "SELECT * FROM useraccounts WHERE accountid = '$idToUpdate'";
@@ -132,18 +151,20 @@
 					$originalEmail = $row['email'];
 
 					// Output the form with prefilled values
-					echo "<form method='POST' action='viewData.php' id='updateForm' enctype='multipart/form-data'>
-							<input type='hidden' id='userId' name='userId' value='$idToUpdate'>
-							<label for='fName'>First Name:</label>
-							<input id='fName' type='text' name='fName' value='$originalFName' required>
-							<label for='lName'>Last Name:</label>
-							<input id='lName' type='text' name='lName' value='$originalLName' required>
-							<label for='email'>Email:</label>
-							<input type='email' id='email' name='email' value='$originalEmail' required>
-							<label for='file'>Upload a Profile Picture:</label>
-							<input type='file' name='file' id='imgUpload'>
-							<button type='submit' name='submit'>Update</button>
-						</form>";
+					echo "<section id='updateForm'>
+								<form method='POST' action='viewData.php' id='updateForm' enctype='multipart/form-data'>
+									<input type='hidden' id='userId' name='userId' value='$idToUpdate'>
+									<label for='fName'>First Name:</label>
+									<input id='fName' type='text' name='fName' value='$originalFName' required>
+									<label for='lName'>Last Name:</label>
+									<input id='lName' type='text' name='lName' value='$originalLName' required>
+									<label for='email'>Email:</label>
+									<input type='email' id='email' name='email' value='$originalEmail' required>
+									<label for='file'>Upload a Profile Picture:</label>
+									<input type='file' name='file' id='imgUpload'>
+									<button type='submit' name='submit'>Update</button>
+								</form>
+						</section>";
 				} 
 				else {
             		echo "User not found.";

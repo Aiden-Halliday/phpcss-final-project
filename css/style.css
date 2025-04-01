@@ -1,9 +1,3 @@
-
-td img{
-    height: 50px;
-    width: 50px;
-}
-
 html{
   background: linear-gradient(to bottom, #f5af47, #ce44c8);
   background-size: cover;
@@ -136,7 +130,7 @@ form#header_login button{
   }
 }
 
-/* messages */
+/* result messages */
 
 .errorMsg{
   background-color: orangered;
@@ -158,6 +152,14 @@ form#header_login button{
   background-color: rgb(34, 175, 76);
   font-size: 1.5em;
   border-top: 5px solid black;
+  font-family: "Roboto", arial;
+  padding: 2%;
+}
+
+.updateDeleteMessage{
+  background-color: orange;
+  font-size: 1.5em;
+  border-bottom: 5px solid black;
   font-family: "Roboto", arial;
   padding: 2%;
 }
@@ -280,7 +282,7 @@ section#masthead div p{
 }
 
 #gameCategories div:last-child div.background-zoom{
-  background-image: url(../imgs/NewAdditionszerotext.png);
+  background-image: url(../imgs/genre.jpg);
 }
 
 #gameCategories div:first-child a:hover + div.background-zoom{
@@ -299,9 +301,9 @@ section#masthead div p{
 
 #gameCategories div:last-child a:hover + div.background-zoom{
   transform: scale(1.1);
-  border: 5px solid black;
+  border: 5px solid white;
   z-index: 2;
-  filter:contrast(1.5);
+  filter:invert(1);
 }
 
 @media screen and (max-width: 768px){
@@ -420,7 +422,103 @@ div#allGamesContainer a#allGameButton:hover{
 
 /* Login Page CSS */
 
+section#loginSection{
+  padding: 2% 5%;
+  font-size: 20px;
+}
 
+section#loginSection > form#login_info{
+  margin: auto;
+  text-align: center;
+  border: 4px solid white;
+  border-radius: 10px;
+  padding: 5%, 0%;
+  background: radial-gradient(circle, #ce44c8, #f5af47);
+}
+
+section#loginSection > form#login_info h2{
+  font-size: 2.5em;
+  padding-bottom: 2%;
+  font-family: "Honk", serif;
+}
+
+section#loginSection > form#login_info div{
+  padding: 7%;
+}
+
+section#loginSection > form#login_info input{
+  outline: none;
+  border: solid 5px #b74bb2;
+  border-radius: 10px;
+  font-family: "Chakra Petch", monospace;
+  transition: all 0.5 ease-in-out;
+  width: 100%;
+  text-align: center;
+}
+
+section#loginSection > form#login_info div:nth-child(2) input{
+  padding: 10px 0px;
+  font-size: 1.5em;
+  border-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+section#loginSection > form#login_info div:nth-child(2) input:focus{
+  background-color: rgb(34, 220, 90);
+  border: solid 7px white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 50%;
+}
+
+section#loginSection > form#login_info div:nth-child(3) input{
+  padding: 10px 0px;
+  font-size: 1.5em;
+  border-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+section#loginSection > form#login_info div:nth-child(3) input:focus{
+  background-color: rgb(77, 255, 122);
+  border: solid 7px white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 50%;
+}
+
+
+section#loginSection > form#login_info div:nth-child(4) button{
+  width: 60%;
+}
+section#loginSection > form#login_info div:nth-child(4) button{
+  font-size: 1.5em;
+  font-family: "Jersey 15", monospace;
+  cursor: pointer;
+  border: 5px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+section#loginSection > form#login_info div:nth-child(4) button[type="submit"]{
+  background-color: rgb(34, 175, 76);
+}
+
+section#loginSection > form#login_info div:nth-child(4) button[type="submit"]:hover{
+  background-color: rgb(43, 208, 93);
+  border: 10px solid white;
+  color: white;
+}
+
+section#loginSection > form#login_info div:nth-child(4) button[type="reset"]{
+  background-color: rgb(192, 21, 21);
+}
+
+section#loginSection > form#login_info div:nth-child(4) button[type="reset"]:hover{
+  background-color: rgb(249, 32, 32);
+  border: 10px solid white;
+  color: white;
+}
 
 /* Register Page CSS */
 section#registerSection{
@@ -431,7 +529,7 @@ section#registerSection{
 section#registerSection > form#register_info{
   margin: auto;
   text-align: center;
-  border: 4px solid black;
+  border: 4px solid white;
   border-radius: 10px;
   padding: 5%, 0%;
   background: linear-gradient(to bottom, #ce44c8, #f5af47);
@@ -455,6 +553,7 @@ section#registerSection > form#register_info input{
   outline: none;
   border: solid 5px #b74bb2;
   border-radius: 10px;
+  text-align: center;
   font-family: "Chakra Petch", monospace;
   transition: all 0.5 ease-in-out;
 }
@@ -462,6 +561,13 @@ section#registerSection > form#register_info input{
 section#registerSection > form#register_info div:nth-child(2) input{
   padding: 10px;
   font-size: 1.5em;
+  border: solid 5px #ea8501;
+  transition: all 0.25s ease-in-out;
+}
+
+section#registerSection > form#register_info div:nth-child(2) input:focus{
+  background-color: rgb(77, 255, 122);
+  border: 10px solid white;
 }
 
 section#registerSection > form#register_info div:nth-child(3) label{
@@ -470,12 +576,26 @@ section#registerSection > form#register_info div:nth-child(3) label{
 
 section#registerSection > form#register_info div:nth-child(3) input{
   padding: 10px;
+  border: solid 5px #ea8501;
   font-size: 1.4em;
+  transition: all 0.25s ease-in-out;
+}
+
+section#registerSection > form#register_info div:nth-child(3) input:focus{
+  background-color: rgb(77, 255, 122);
+  border: 10px solid white;
 }
 
 section#registerSection > form#register_info div:nth-child(4) input{
   padding: 10px;
+  border: solid 5px #ea8501;
   font-size: 1.5em;
+  transition: all 0.25s ease-in-out;
+}
+
+section#registerSection > form#register_info div:nth-child(4) input:focus{
+  background-color: rgb(77, 255, 122);
+  border: 10px solid white;
 }
 
 section#registerSection > form#register_info div:nth-child(5) label{
@@ -485,6 +605,12 @@ section#registerSection > form#register_info div:nth-child(5) label{
 section#registerSection > form#register_info div:nth-child(5) input{
   padding: 10px;
   font-size: 1.4em;
+  transition: all 0.25s ease-in-out;
+}
+
+section#registerSection > form#register_info div:nth-child(5) input:focus{
+  background-color: rgb(77, 255, 122);
+  border: 10px solid white;
 }
 
 section#registerSection > form#register_info div:nth-child(6) label{
@@ -494,6 +620,12 @@ section#registerSection > form#register_info div:nth-child(6) label{
 section#registerSection > form#register_info div:nth-child(6) input{
   padding: 10px;
   font-size: 1.4em;
+  transition: all 0.25s ease-in-out;
+}
+
+section#registerSection > form#register_info div:nth-child(6) input:focus{
+  background-color: rgb(77, 255, 122);
+  border: 10px solid white;
 }
 
 section#registerSection > form#register_info div:nth-child(7) label{
@@ -523,6 +655,7 @@ section#registerSection > form#register_info div:nth-child(8) button{
   border-radius: 10px;
   padding: 10px;
   transition: all 0.5s ease-in-out;
+  font-family: "Jersey 15", monospace;
 }
 
 section#registerSection > form#register_info div:nth-child(8) button[type="submit"]{
@@ -641,17 +774,236 @@ main#terms section li::first-line{
 
 
 /* User Library CSS */
+h2#libraryTitle{
+  font-family: "Honk", sans-serif;
+  font-size: 40px;
+  text-align: center;
+}
+
+.logoutButton{
+  display: block;
+  background-color: rgb(34, 175, 76);
+  font-size: 1.5em;
+  width: 20%;
+  font-family: "Jersey 15", monospace;
+  cursor: pointer;
+  border: 5px solid black;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+section.noData div{
+  margin-bottom: 5%;
+}
+
+section.noData .logoutButton{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.logoutButton:hover{
+  border-radius: 5px;
+  background-color: rgb(42, 217, 95);
+  border-color: white;
+}
 
 
 /* ViewData CSS */
+section#userTable{
+  padding: 2% 5%;
+  overflow-x: auto;
+}
+
+section#userTable table {
+  border-collapse: collapse;
+  font-size: 20px;
+  border-spacing: 0;
+  width: 50%;
+  border: 5px solid black;
+  border-radius: 3px;
+  font-family: "Roboto", serif;
+  margin-bottom: 2%;
+  margin: auto;
+  transition: all 0.5s ease-in-out;
+}
 
 
-/* ViewGames CSS */
+section#userTable table tr{
+  transition: all 0.5s ease-in-out;
+  white-space: nowrap; 
+}
 
+section#userTable table tr:first-child{
+  font-family: "Jersey 15", sans-serif;
+  font-size: 1.5em;
+}
+
+section#userTable table td {
+  text-align: left;
+  padding: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+section#userTable table td img{
+  height: 50px;
+  width: 50px;
+}
+
+section#userTable table tr:nth-child(even){
+  background-color: #b74bb2;
+}
+
+section#userTable table tr:nth-child(odd){
+  background-color: rgb(34, 175, 76);
+}
+
+section#userTable table tr:hover{
+  background-color: #ea8501;
+}
+
+section#userTable table tr:last-child td:nth-child(7) form button{
+  background-color: rgb(179, 22, 22);
+  font-size: 1.5em;
+  font-family: "Jersey 15", monospace;
+  cursor: pointer;
+  border: 5px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+section#userTable table tr:last-child td:nth-child(8) form button{
+  background-color: rgb(34, 175, 76);
+  font-size: 1.5em;
+  font-family: "Jersey 15", monospace;
+  cursor: pointer;
+  border: 5px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+section#userTable table tr:last-child td:nth-child(7) form button:hover{
+  background-color: rgb(239, 28, 28);
+}
+
+section#userTable table tr:last-child td:nth-child(8) form button:hover{
+  background-color: rgb(40, 218, 94);
+}
+
+section#updateForm{
+
+}
+
+/* Game list CSS (used in viewGames.php and userLibrary.php */
+
+.gameList{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.gameContainer{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: #e9d1ec;
+  margin: 15px;
+  border: 5px solid black;
+  width: 75%;
+}
+
+.gameInfo{
+  font-family: "Jersey 15", monospace;
+  font-size: 20px;
+  width: 70%;
+}
+.gameInfo h2{
+  margin: 5% 2%;
+  font-size: 2em;
+  text-decoration: underline;
+}
+
+.gameInfo p{
+  font-size: 1.5em;
+  margin: 10px;
+}
+
+.gameInfo div p:first-child{
+  margin-bottom: 5%;
+}
+
+.saleNotif{
+  font-family: "Honk", serif;
+  font-size: 1.7em;
+  position: absolute;
+  
+}
+
+.gameImage img{
+  width: 200px;
+  height: 300px;
+  margin: 5% 2%;
+}
+
+.gameImage div{
+  width: 100px;
+  height: 200px;
+}
+
+.gameImage button{
+  font-size: 1.5em;
+  cursor: pointer;
+  border: 4px solid black;
+  border-radius: 10px;
+  font-family: "Jersey 15", monospace;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 60px;
+  background-color: rgb(34, 175, 76);;
+  transition: all 0.25s ease-in-out;
+}
+
+.gameImage button:hover{
+  background-color: rgb(0, 255, 64);
+  border: 4px solid white;
+}
+
+/* When there are no games available */
+.noData{
+  border: 5px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ea8501;
+  font-family: "Jersey 15", monospace;
+  height: 100vh;
+}
+
+.noData h2{
+  font-size: 3em;
+  color: red;
+}
+
+.noData p{
+  font-size: 2em;
+}
+
+@media screen and (max-width: 1127px){
+  .gameList {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .gameImage button{
+    margin-bottom: 15px;
+  }
+}
 
 /* Global-Footer Page CSS */
 
 footer{
+  margin-top: 2%;
   font-family: "Jersey 15", monospace;
   font-size: 20px;
   display: flex;

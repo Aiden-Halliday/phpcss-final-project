@@ -1,7 +1,7 @@
 <?php
     $title = "View Games | Rent N' Run";
     $description = "content page of Rent N' Run";
-	include './includes/global-header.php';
+    include './includes/global-header.php';
     require_once ('./includes/database.php');
     $filter = isset($_GET['filter']) ? $_GET['filter'] : 'All';
     if ($filter == "All")
@@ -61,14 +61,19 @@
     $result = $conn->prepare($sql);
     $result->execute();
     if($result->rowCount() > 0){
+        echo "<section class='gameList'>";
         foreach($result as $row){
             echo "<section class='gameContainer'>";
                 echo "<div class='gameInfo'>
                     <h2>" . $row['title'] . "</h2>
-                    <p>" . $row['description'] . "</p>
-                    <p>" . $row['genre'] . "</p> 
-                    <p>" . $row['publisher'] . "</p> 
-                    <p>" .$row['rating'] . "</p>
+                    <div>
+                        <p>" . $row['description'] . "</p>
+                        <p>" . $row['genre'] . "</p> 
+                    </div>
+                    <div>
+                        <p>" . $row['publisher'] . "</p> 
+                        <p>" .$row['rating'] . "</p>
+                    </div>
                 </div>
                 <div class='gameImage'>";
                     if($row['sale'] == 1)
@@ -82,12 +87,14 @@
                 </div>
             </section>";
         }
+        echo "</section>";
     }
     else{
-        echo "<section class='nodata'>";
+        echo "<section class='noData'>";
             echo "<h2>No games available</h2>";
             echo "<p>There are no games available to rent at the moment, please check back later</p>";
         echo "</section>";
     }
+
         include './includes/global-footer.php';
 ?>
